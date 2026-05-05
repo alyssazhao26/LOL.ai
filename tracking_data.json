@@ -1,0 +1,95 @@
+[
+  {
+    "type": "page_view",
+    "data": {
+      "view": "terms",
+      "data": null
+    },
+    "timestamp": 1778017467011
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "home",
+      "data": null
+    },
+    "timestamp": 1778017470183
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "terms",
+      "data": null
+    },
+    "timestamp": 1778017471622
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "home",
+      "data": null
+    },
+    "timestamp": 1778017472700
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "privacy",
+      "data": null
+    },
+    "timestamp": 1778017473955
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "home",
+      "data": null
+    },
+    "timestamp": 1778017475946
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "ethics",
+      "data": null
+    },
+    "timestamp": 1778017477379
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "home",
+      "data": null
+    },
+    "timestamp": 1778017479054
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "admin",
+      "data": null
+    },
+    "timestamp": 1778017487326
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "home",
+      "data": null
+    },
+    "timestamp": 1778017501650
+  },
+  {
+    "type": "search",
+    "data": "Quantum Computing",
+    "timestamp": 1778017503501
+  },
+  {
+    "type": "page_view",
+    "data": {
+      "view": "results",
+      "data": "Quantum Computing"
+    },
+    "timestamp": 1778017503502
+  }
+]

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL.AI</title>
+    <link rel="icon" type="image/png" href="./favicon3.png">
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for Visual Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+
+    <!-- Top Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" onclick="app.navigate('home')">
+                <img src="./favicon3.png" alt="LOL.AI Logo" style="width: 24px; height: 24px;">
+                <span>LOL.AI</span>
+            </div>
+            
+            <div class="search-container nav-search hidden" id="navSearchContainer">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="navSearchInput" placeholder="Search topics, keywords...">
+            </div>
+
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="app.openSubscribeModal()">
+                    <i data-lucide="bell"></i> Subscribe
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="appContent">
+        <!-- Views will be injected here by app.js -->
+    </main>
+
+    <!-- Footer: Compliance & Trust Layer -->
+    <footer class="footer" style="padding: 2rem; padding-bottom: 1rem;">
+        <div class="footer-content" style="gap: 2rem;">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="./favicon3.png" alt="LOL.AI Logo" style="width: 24px; height: 24px;">
+                    <span>LOL.AI</span>
+                </div>
+                <p class="disclaimer" style="font-size: 0.85rem;">
+                    <i data-lucide="info" style="width: 14px; height: 14px;"></i>
+                    Data provided by <a href="http://export.arxiv.org/api/query" target="_blank" style="color:var(--accent-primary)">arXiv</a> and <a href="https://api.semanticscholar.org/api-docs/" target="_blank" style="color:var(--accent-primary)">Semantic Scholar</a> APIs.<br>
+                    <span style="font-style: italic; color: var(--text-muted); font-size: 0.8rem; margin-top: 4px; display: block;">"Thank you to arXiv for use of its open access interoperability."</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Compliance</h4>
+                    <a href="#" onclick="event.preventDefault(); app.navigate('terms')" style="font-size: 0.85rem;">Terms of Service</a>
+                    <a href="#" onclick="event.preventDefault(); app.navigate('privacy')" style="font-size: 0.85rem;">Privacy Policy</a>
+                </div>
+                <div class="link-group">
+                    <h4>Trust & Support</h4>
+                    <a href="#" onclick="event.preventDefault(); app.navigate('ethics')" style="font-size: 0.85rem;">Ethical Use Statement</a>
+                </div>
+            </div>
+        </div>
+        <div style="font-size: 0.75rem; text-align: center; margin-top: 2rem; color: var(--text-muted);">
+            &copy; 2026 LOL.AI Research Assistant. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Subscription Modal -->
+    <div class="modal-overlay hidden" id="subscribeModal">
+        <div class="modal glass-panel">
+            <div class="modal-header">
+                <h2>Curated Recommendations</h2>
+                <button class="icon-btn" onclick="app.closeSubscribeModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Get personalized AI-curated research insights based on your searches.</p>
+                <form id="subscribeForm" onsubmit="app.handleSubscribe(event)">
+                    <div class="form-group">
+                        <label for="subEmail">Email Address</label>
+                        <input type="email" id="subEmail" required placeholder="name@university.edu">
+                    </div>
+                    <div class="form-group">
+                        <label for="subFreq">Frequency</label>
+                        <select id="subFreq">
+                            <option value="daily">Daily Briefing</option>
+                            <option value="weekly">Weekly Summary</option>
+                            <option value="monthly">Monthly Deep Dive</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOS Modal -->
+    <div class="modal-overlay hidden" id="tosModal" style="z-index: 9999; background: rgba(0,0,0,0.85);">
+        <div class="modal glass-panel" style="max-width: 500px; text-align: center; border-top: 4px solid var(--accent-primary);">
+            <div class="modal-header" style="justify-content: center; border-bottom: none; padding-bottom: 0;">
+                <h2>Terms of Service</h2>
+            </div>
+            <div class="modal-body" style="padding: 1.5rem 2rem 2rem;">
+                <p style="margin-bottom: 2rem; color: var(--text-secondary); line-height: 1.6;">
+                    By accessing LOL.AI, you agree to our <a href="#" onclick="event.preventDefault(); app.navigate('terms');" style="color:var(--accent-primary)">Terms of Service</a>, <a href="#" onclick="event.preventDefault(); app.navigate('privacy');" style="color:var(--accent-primary)">Privacy Policy</a>, and <a href="#" onclick="event.preventDefault(); app.navigate('ethics');" style="color:var(--accent-primary)">Ethical Use Statement</a>.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center;">
+                    <button class="btn btn-secondary" onclick="app.rejectTOS()" style="background: #374151; border-color: #374151; color: #d1d5db;">Reject</button>
+                    <button class="btn btn-primary" onclick="app.acceptTOS()" style="background: #2563eb; padding-left: 2rem; padding-right: 2rem;">Accept</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="api.js?v=16"></script>
+    <script src="charts.js?v=16"></script>
+    <script src="app.js?v=16"></script>
+</body>
+</html>
